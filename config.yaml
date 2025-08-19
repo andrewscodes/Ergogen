@@ -1,0 +1,498 @@
+units:
+  # Proxy Spacing Variables
+  kx: 19
+  ky: 19
+  # Padding Variables
+  px: kx + 2
+  py: ky + 2  
+  $default_height: 19
+  $default_width: 19
+  pwr_trace_width: 0.25
+  gnd_trace_width: 0.25
+  signal_trace_width: 0.15
+  via_size: 0.56 # JLCPCB min 0.56 | KiCad default 0.8
+  via_drill: 0.3 # JLCPCB min 0.3 | KiCad default 0.4
+  # Defaults to M2 Screws
+  screwSize: 1
+  encoderHoleSize: 8.6
+points:
+  zones:
+    matrix:
+      columns:
+        one:
+          key:
+            column_net: C1
+          rows:
+            one.key:
+              led_prev: LED
+              led_next: LED1
+            two.key:
+              led_prev: LED11
+              led_next: LED12
+            three.key:
+              led_prev: LED12
+              led_next: LED13
+            four.key:
+              led_prev: LED23
+              led_next: LED24
+        two:
+          key:
+            column_net: C2
+          rows:
+            one.key:
+              led_prev: LED1
+              led_next: LED2
+            two.key:
+              led_prev: LED10
+              led_next: LED11
+            three.key:
+              led_prev: LED13
+              led_next: LED14
+            four.key:
+              led_prev: LED22
+              led_next: LED23
+        three:
+          key:
+            column_net: C3
+          rows:
+            one.key:
+              led_prev: LED2
+              led_next: LED3
+            two.key:
+              led_prev: LED9
+              led_next: LED10
+            three.key:
+              led_prev: LED14
+              led_next: LED15
+            four.key:
+              led_prev: LED21
+              led_next: LED22
+        four:
+          key:
+            column_net: C4
+          rows:
+            one.key:
+              led_prev: LED3
+              led_next: LED4
+            two.key:
+              led_prev: LED8
+              led_next: LED9
+            three.key:
+              led_prev: LED15
+              led_next: LED16
+            four.key:
+              led_prev: LED20
+              led_next: LED21
+        five:
+          key:
+            column_net: C5
+          rows:
+            one.key:
+              led_prev: LED4
+              led_next: LED5
+            two.key:
+              led_prev: LED7
+              led_next: LED8
+            three.key:
+              led_prev: LED16
+              led_next: LED17
+            four.key:
+              led_prev: LED19
+              led_next: LED20
+        six:
+          key:
+            column_net: C6
+          rows:
+            one.key:
+              led_prev: LED5
+              led_next: LED6
+            two.key:
+              led_prev: LED6
+              led_next: LED7
+            three.key:
+              led_prev: LED17
+              led_next: LED18
+            four.key:
+              led_prev: LED18
+              led_next: LED19
+      rows:
+        four:
+          row_net: R4
+        three:
+          row_net: R3
+        two:
+          row_net: R2
+        one:
+          row_net: R1
+      anchor:
+          shift: [150, -150]
+    thumb:
+      anchor:
+        ref: matrix_three_four
+        shift: [-0.15kx, -1ky]      
+      columns:
+        first:                  
+          key.name: thumb_first  
+          key.column_net: C1
+          rows:
+            five.key:
+              led_prev: LED24
+              led_next: LED25
+        second:             
+          key.name: thumb_second  
+          key.column_net: C2  
+          rows:
+            five.key:
+              led_prev: LED25
+              led_next: LED26
+        third:
+          key.name: thumb_third  
+          key.column_net: C3  
+          rows:
+            five.key:
+              led_prev: LED26
+              led_next: LED27
+        fourth:
+          key.name: thumb_fourth  
+          key.column_net: C4
+          key.splay: -12
+          key.origin: [-0.5kx, -0.5ky]
+          rows:
+            five.key:
+              led_prev: LED27
+              led_next: LED28
+        fifth:
+          key.name: thumb_fifth
+          key.column_net: C5
+          key.splay: -8   
+          key.origin: [0.5kx, -0.5ky]
+          rows:
+            five.key:
+              led_prev: LED28
+              led_next: LEDEND
+      rows:
+        five:
+          row_net: R5
+    encoder:
+      anchor:
+        ref: matrix_six_four
+        shift: [1.134kx, 0ky]
+      columns:
+        first:
+          key.name: encoder
+outlines:
+  mainkeys:
+    - what: rectangle
+      where: /^(?!.*encoder)(matrix|thumb)/
+      bound: false
+      size: [kx-5.20,ky-5.20]
+  encoder:
+    - what: circle
+      radius: encoderHoleSize
+      where: encoder
+  holes:
+    - what: circle
+      radius: screwSize
+      where: 
+        ref: matrix_one_one
+        shift: [0.5kx,-0.6ky]
+    - what: circle
+      radius: screwSize
+      where: 
+        ref: matrix_five_one
+        shift: [0.5kx,-0.6ky] 
+    - what: circle
+      radius: screwSize
+      where: 
+        ref: matrix_one_three
+        shift: [0.5kx,-0.6ky]  
+    - what: circle
+      radius: screwSize
+      where: 
+        ref: matrix_five_three
+        shift: [0.5kx,-0.6ky]  
+    - what: circle
+      radius: screwSize
+      where: 
+        ref: matrix_six_four
+        shift: [0.75kx,-0.65ky]
+    - what: circle
+      radius: screwSize
+      where: 
+        ref: matrix_six_four
+        shift: [0.78kx, 0.6ky]
+    - what: circle
+      radius: screwSize
+      where: 
+        ref: matrix_six_four
+        shift: [1.49kx, 0.6ky]    
+  tplatebase:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_one_four
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_one_one
+          shift: [-0.5px,0.5py]
+        - ref: matrix_six_one     
+          shift: [0.5px,0.5py]  
+        - ref: matrix_six_four    
+          shift: [0.5px,-0.35py]    
+        - ref: thumb_fifth
+          shift: [0.5px,0.5py]
+        - ref: thumb_fifth
+          shift: [0.5px,-0.5py]
+        - ref: thumb_third
+          shift: [0.5px,-0.55py]
+        - ref: thumb_first
+          shift: [-0.5px,-0.55py]
+      fillet: 2
+  oledcoverbase:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_six_one     
+          shift: [0.5px,0.5py]  
+        - ref: matrix_six_four    
+          shift: [0.5px,-0.45py]    
+        - ref: thumb_fifth
+          shift: [0.5px,0.5py]
+        - ref: matrix_six_one     
+          shift: [1.55px,0.5py]               
+  board:
+    - what: polygon
+      operation: stack
+      points:
+        - ref: matrix_one_four
+          shift: [-0.5px,-0.5py]
+        - ref: matrix_one_one
+          shift: [-0.5px,0.5py]
+        - ref: matrix_six_one     
+          shift: [1.56px,0.5py]    
+        - ref: thumb_fifth
+          shift: [0.5px,0.5py]
+        - ref: thumb_fifth
+          shift: [0.5px,-0.5py]
+        - ref: thumb_third
+          shift: [0.5px,-0.55py]
+        - ref: thumb_first
+          shift: [-0.5px,-0.55py]
+      fillet: 2
+  combo:
+    - name: board
+    - operation: subtract
+      name: mainkeys
+    - operation: subtract
+      name: holes
+    - operation: subtract
+      name: encoder
+  tplate:
+    - name: tplatebase
+    - operation: subtract
+      name: mainkeys
+    - operation: subtract
+      name: holes
+  oledcover:
+    - name: oledcoverbase
+    - operation: subtract
+      name: encoder
+    - operation: subtract
+      name: holes
+pcbs:
+  kitsune:
+    template: kicad8
+    outlines:
+      main:
+        outline: board   
+    footprints:
+      nice_nano:
+        what: mcu_nice_nano
+        params:
+          P0: DAT
+          P1: LED
+          P21: SDA
+          P20: SCL
+          P19: CS
+          P18: R1
+          P15: R2
+          P14: R3
+          P16: R4
+          P10: R5
+          P2: EA
+          P3: EB
+          P4: C1
+          P5: C2
+          P6: C3
+          P7: C4
+          P8: C5
+          P9: C6
+          reversible: true
+          include_traces: true
+          show_silk_labels: true
+          show_via_labels: true
+          show_instructions: false
+          use_rectangular_jumpers: true
+        where:
+          ref: matrix_six_one
+          shift: [1.1kx,-0.33ky]
+      nice_view:
+        what: display_nice_view
+        params:
+          MOSI: SDA
+          SCK: SCL
+          reversible: true
+          include_labels: false
+          invert_jumpers_position: true        
+        where:
+          ref: matrix_six_two
+          shift: [21,9]   
+      mx_hotswap:
+        what: switch_mx    
+        where: /^(?!.*encoder)(matrix|thumb)/
+        params:                 
+          hotswap: true 
+          include_silkscreen: true
+          reversible: true
+          from: "{{column_net}}"
+          to: "{{colrow}}"      
+        adjust:
+          rotate: 180
+      diode:
+        what: diode_tht_sod123
+        where: /^(?!.*encoder)(matrix|thumb)/
+        params:
+          reversible: true
+          from: "{{colrow}}"
+          to: "{{row_net}}"
+        adjust:
+          shift: [-7.77, 2.5]
+          rotate: -90
+          resist: true
+      encoder_diode:
+        what: diode_tht_sod123
+        where: encoder
+        params:
+          reversible: true
+          from: endiode
+          to: R5
+        adjust:
+          shift: [-7.5, 5]
+          rotate: -90
+          resist: true
+      rotary_encoder:
+        what: rotary_encoder_ec11_ec12
+        where: encoder   
+        params:
+          S1: C6
+          S2: endiode
+          A: EA
+          B: GND
+          C: EB
+      per_key_led:        
+        what: led_sk6812mini-e
+        params:  
+          P1: VCC         
+          P2: "{{key.led_next}}" #DOUT 
+          P3: GND
+          P4: "{{key.led_prev}}" #DIN
+          reversible: true
+          reverse_mount: true
+          include_traces_vias: true
+          via_size: via_size
+          via_drill: via_drill
+          include_keepout: false
+          include_courtyard: false
+          signal_trace_width: signal_trace_width
+          gnd_trace_width: gnd_trace_width
+          vcc_trace_width: pwr_trace_width
+        where: /^(?!.*encoder)(matrix|thumb)/
+        adjust:
+          shift: [0, 5]
+      battery_connector:
+        what: battery_connector_jst_ph_2
+        params:
+          BAT_P: BAT_P
+          BAT_N: GND
+          reversible: true
+          include_courtyard: false
+        where:
+          ref: matrix_six_three
+          shift: [1.1kx,0.2ky]     
+      reset_switch:
+        what: reset_switch_smd_side
+        params:
+          from: GND
+          to: RST
+          reversible: true
+          include_bosses: true
+        where:
+          ref: matrix_six_three
+          shift: [1.620kx,0.5ky]    
+        adjust:
+          rotate: -90
+      power_switch:
+        what: power_switch_smd_side
+        params:
+          from: BAT_P
+          to: RAW
+          reversible: true
+        where:
+          ref: matrix_six_three
+          shift: [1.623kx,0ky]    
+        adjust:
+      hole_one_one:
+        what: mounting_hole_npth
+        params: 
+          hole_size: 4.5
+          hole_drill: 4
+        where: 
+          ref: matrix_one_one
+          shift: [0.5kx,-0.6ky]
+      hole_five_one:
+        what: mounting_hole_npth
+        params: 
+          hole_size: 4.5
+          hole_drill: 4
+        where: 
+          ref: matrix_five_one
+          shift: [0.5kx,-0.6ky]     
+      hole_one_three:
+        what: mounting_hole_npth
+        params: 
+          hole_size: 4.5
+          hole_drill: 4
+        where: 
+          ref: matrix_one_three
+          shift: [0.5kx,-0.6ky]      
+      hole_five_three:
+        what: mounting_hole_npth
+        params: 
+          hole_size: 4.5
+          hole_drill: 4
+        where: 
+          ref: matrix_five_three
+          shift: [0.5kx,-0.6ky]   
+      hole_six_four:
+        what: mounting_hole_npth
+        params: 
+          hole_size: 4.5
+          hole_drill: 4
+        where: 
+          ref: matrix_six_four
+          shift: [0.75kx,-0.65ky]
+      hole_nice_view_left:
+        what: mounting_hole_npth
+        params: 
+          hole_size: 2.6
+          hole_drill: 2.2
+        where: 
+          ref: matrix_six_four
+          shift: [0.78kx, 0.6ky] 
+      hole_nice_view_right:
+        what: mounting_hole_npth
+        params: 
+          hole_size: 2.6
+          hole_drill: 2.2
+        where: 
+          ref: matrix_six_four
+          shift: [1.49kx, 0.6ky]   
