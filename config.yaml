@@ -427,7 +427,7 @@ pcbs:
           include_bosses: true
         where:
           ref: matrix_six_three
-          shift: [1.620kx,0.5ky]    
+          shift: [1.615kx,0.5ky]    
         adjust:
           rotate: -90
       power_switch:
