@@ -306,20 +306,20 @@ pcbs:
         outline: board   
     footprints:
       nice_nano:
-        what: mcu_nice_nano
+        what: ceoloide/mcu_nice_nano
         params:
-          P0: DAT
-          P1: LED
-          P21: SDA
-          P20: SCL
-          P19: CS
+          P0: LED
+          P1: CS
+          P21: EA
+          P20: EB
+          P19: D19
           P18: R1
           P15: R2
           P14: R3
           P16: R4
           P10: R5
-          P2: EA
-          P3: EB
+          P2: SDA
+          P3: SCL
           P4: C1
           P5: C2
           P6: C3
@@ -336,18 +336,18 @@ pcbs:
           ref: matrix_six_one
           shift: [1.1kx,-0.33ky]
       nice_view:
-        what: display_nice_view
+        what: ceoloide/display_nice_view
         params:
           MOSI: SDA
           SCK: SCL
           reversible: true
           include_labels: false
-          invert_jumpers_position: true        
+          invert_jumpers_position: true
         where:
           ref: matrix_six_two
           shift: [21,9]   
       mx_hotswap:
-        what: switch_mx    
+        what: ceoloide/switch_mx    
         where: /^(?!.*encoder)(matrix|thumb)/
         params:                 
           hotswap: true 
@@ -358,7 +358,7 @@ pcbs:
         adjust:
           rotate: 180
       diode:
-        what: diode_tht_sod123
+        what: ceoloide/diode_tht_sod123
         where: /^(?!.*encoder)(matrix|thumb)/
         params:
           reversible: true
@@ -369,7 +369,7 @@ pcbs:
           rotate: -90
           resist: true
       encoder_diode:
-        what: diode_tht_sod123
+        what: ceoloide/diode_tht_sod123
         where: encoder
         params:
           reversible: true
@@ -380,7 +380,7 @@ pcbs:
           rotate: -90
           resist: true
       rotary_encoder:
-        what: rotary_encoder_ec11_ec12
+        what: ceoloide/rotary_encoder_ec11_ec12
         where: encoder   
         params:
           S1: C6
@@ -389,7 +389,7 @@ pcbs:
           B: GND
           C: EB
       per_key_led:        
-        what: led_sk6812mini-e
+        what: ceoloide/led_sk6812mini-e
         params:  
           P1: VCC         
           P2: "{{key.led_next}}" #DOUT 
@@ -409,7 +409,7 @@ pcbs:
         adjust:
           shift: [0, 5]
       battery_connector:
-        what: battery_connector_jst_ph_2
+        what: ceoloide/battery_connector_jst_ph_2
         params:
           BAT_P: BAT_P
           BAT_N: GND
@@ -419,7 +419,7 @@ pcbs:
           ref: matrix_six_three
           shift: [1.1kx,0.2ky]     
       reset_switch:
-        what: reset_switch_smd_side
+        what: ceoloide/reset_switch_smd_side
         params:
           from: GND
           to: RST
@@ -431,7 +431,7 @@ pcbs:
         adjust:
           rotate: -90
       power_switch:
-        what: power_switch_smd_side
+        what: ceoloide/power_switch_smd_side
         params:
           from: BAT_P
           to: RAW
@@ -441,7 +441,7 @@ pcbs:
           shift: [1.623kx,0ky]    
         adjust:
       hole_one_one:
-        what: mounting_hole_npth
+        what: ceoloide/mounting_hole_npth
         params: 
           hole_size: 4.5
           hole_drill: 4
@@ -449,7 +449,7 @@ pcbs:
           ref: matrix_one_one
           shift: [0.5kx,-0.6ky]
       hole_five_one:
-        what: mounting_hole_npth
+        what: ceoloide/mounting_hole_npth
         params: 
           hole_size: 4.5
           hole_drill: 4
@@ -457,7 +457,7 @@ pcbs:
           ref: matrix_five_one
           shift: [0.5kx,-0.6ky]     
       hole_one_three:
-        what: mounting_hole_npth
+        what: ceoloide/mounting_hole_npth
         params: 
           hole_size: 4.5
           hole_drill: 4
@@ -465,7 +465,7 @@ pcbs:
           ref: matrix_one_three
           shift: [0.5kx,-0.6ky]      
       hole_five_three:
-        what: mounting_hole_npth
+        what: ceoloide/mounting_hole_npth
         params: 
           hole_size: 4.5
           hole_drill: 4
@@ -473,7 +473,7 @@ pcbs:
           ref: matrix_five_three
           shift: [0.5kx,-0.6ky]   
       hole_six_four:
-        what: mounting_hole_npth
+        what: ceoloide/mounting_hole_npth
         params: 
           hole_size: 4.5
           hole_drill: 4
@@ -481,7 +481,7 @@ pcbs:
           ref: matrix_six_four
           shift: [0.75kx,-0.65ky]
       hole_nice_view_left:
-        what: mounting_hole_npth
+        what: ceoloide/mounting_hole_npth
         params: 
           hole_size: 2.6
           hole_drill: 2.2
@@ -489,7 +489,7 @@ pcbs:
           ref: matrix_six_four
           shift: [0.78kx, 0.6ky] 
       hole_nice_view_right:
-        what: mounting_hole_npth
+        what: ceoloide/mounting_hole_npth
         params: 
           hole_size: 2.6
           hole_drill: 2.2
