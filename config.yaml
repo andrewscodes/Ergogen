@@ -243,9 +243,11 @@ outlines:
         - ref: thumb_fifth
           shift: [0.5px,-0.5py]
         - ref: thumb_third
-          shift: [0.5px,-0.55py]
+          shift: [0.4px,-0.5py]
         - ref: thumb_first
-          shift: [-0.5px,-0.55py]
+          shift: [-0.5px,-0.5py]
+        - ref: thumb_first
+          shift: [-0.5px,0.405py]
       fillet: 2
   oledcoverbase:
     - what: polygon
@@ -264,7 +266,7 @@ outlines:
       operation: stack
       points:
         - ref: matrix_one_four
-          shift: [-0.5px,-0.5py]
+          shift: [-0.5px,-0.5py]          
         - ref: matrix_one_one
           shift: [-0.5px,0.5py]
         - ref: matrix_six_one     
@@ -274,9 +276,11 @@ outlines:
         - ref: thumb_fifth
           shift: [0.5px,-0.5py]
         - ref: thumb_third
-          shift: [0.5px,-0.55py]
+          shift: [0.4px,-0.5py]
         - ref: thumb_first
-          shift: [-0.5px,-0.55py]
+          shift: [-0.5px,-0.5py]
+        - ref: thumb_first
+          shift: [-0.5px,0.405py]
       fillet: 2
   combo:
     - name: board
